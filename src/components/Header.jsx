@@ -12,11 +12,12 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-    background-color: #333;
+    background-color: black;
     width: 100%;
 `
 
 const HeaderWrapper = styled.div`
+    font-family: 'Zen Tokyo Zoo', cursive;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,4 +25,5 @@ const HeaderWrapper = styled.div`
     color: #eee;
     font-size: 2.2rem;
     padding: 3rem 8rem;
+
 `

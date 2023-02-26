@@ -1,43 +1,28 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Utils/Button';
+import ResultScreen from './ResultScreen';
 
 
 
-export default function Slider({compareDate}) {
-
-let date = compareDate
-
-    console.log(date)
-
-    const [value, setValue] = useState(1960);
-    const MAX = 2020;
-
-    function handleChange(e){
-        setValue(e.target.value)
-    }
-
-    function checkWin(){
-        if(date === value){
-            console.log('Winner')
-        } else {
-            console.log('Wrong')
-        }
-    }
+export default function Slider({checkGuess, handleSlider, MAX, guess, year, hasGuessed, getImage, points, roundScore, round, newGame}) {
 
     return(
-        <SlideContainer >
-            <Box>{value}</Box>
-            <RangeSlider 
-                type='range' 
-                min='1918' 
-                max={MAX} 
-                className='slider' 
-                onChange={handleChange} 
-                value={value} 
-            />
-            <Button onClick={checkWin} text='Submit' style='padding-top: 10px'></Button>
-        </SlideContainer>
+        <>
+            <SlideContainer >
+                <Box>{guess}</Box>
+                <RangeSlider 
+                    type='range' 
+                    min='1918' 
+                    max={MAX} 
+                    className='slider' 
+                    onChange={handleSlider} 
+                    value={guess} 
+                />
+                {!hasGuessed && <Button onClick={checkGuess} text={round < 5 ? 'Submit' : 'Results'}></Button>}
+            </SlideContainer>
+            <ResultScreen year={year} checkGuess={checkGuess} hasGuessed={hasGuessed} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} />
+        </>
     )
 }
 

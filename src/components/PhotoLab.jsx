@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import photos from '../photos.json';
 import Slider from './Slider';
-import Button from './Utils/Button';
 import styled from 'styled-components';
+import ResultScreen from './ResultScreen'
 
 
 function Photo(){
@@ -11,25 +11,69 @@ function Photo(){
 
     const [image, setImages] = useState(firstImage.img)
     const [year, setYear] = useState(firstImage.year)
+    const [guess, setGuess] = useState(1960);
+    const [points, setPoints] = useState(0);
+    const [boolGuess, setBoolGuess] = useState(false);
+    const [round, setRound] = useState(1)
+    const [roundScore, setRoundScore] = useState(0);
+    const MAX = 2020;
+    
+
 
     function getImage(){
+        setRound(prevRound => prevRound + 1)
+        setBoolGuess(false)
+        setRoundScore(0)
         const randomNumber = Math.floor(Math.random() * photos.length)
         const imageArray = photos;
         let newImage = imageArray[randomNumber]
         let imgYear = newImage.year
         setImages(newImage.img)
         setYear(imgYear)
-
     }
 
-    console.log(image)
+    function checkGuess(){
+        if(year === guess){
+            setRoundScore(100)
+            setPoints(prevState => prevState + 100)
+
+            console.log('Winner')
+
+            //FIX EVENTUALLY
+            
+        } else {
+            if(year > guess){
+                setRoundScore(guess - year + 100)
+                setPoints(prevState => prevState + (guess - year + 100))
+            }
+            else if(year < guess){
+                setRoundScore(year - guess + 100)
+                setPoints(prevState => prevState + (year - guess + 100))
+            }
+            // FIX EVENTUALLY
+        }
+        setBoolGuess(true)
+    }
+
+    function newGame() {
+        setRound(0);
+        setPoints(0);
+        getImage();
+    }
+
+
+    function handleSlider(e){
+        setGuess(e.target.value)
+    }
+
     console.log(year)
+    console.log(roundScore)
 
     return (
         <PhotoLabWrapper>
-            <Button onClick={getImage} text='Get Image'></Button>
+            <h1>Round {round} of 5</h1>
             <img src={image} />
-            <Slider compareDate={year} />
+            <Slider checkGuess={checkGuess} handleSlider={handleSlider} MAX={MAX} guess={guess} year={year} hasGuessed={boolGuess} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame}/>
         </PhotoLabWrapper>
 
     )

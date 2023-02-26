@@ -24,7 +24,8 @@ const MainWrapper = styled.main`
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    
+    background-color: platinum;
+    margin-left: 0;
     
 `
 
