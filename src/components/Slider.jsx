@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Utils/Button';
 import ResultScreen from './ResultScreen';
+import Ruler from './Ruler';
 
 
 
@@ -15,13 +16,13 @@ export default function Slider({checkGuess, handleSlider, MAX, guess, year, hasG
                     type='range' 
                     min='1918' 
                     max={MAX} 
-                    className='slider' 
+                    className='guessSlider' 
                     onChange={handleSlider} 
                     value={guess} 
                 />
                 {!hasGuessed && <Button onClick={checkGuess} text={round < 5 ? 'Submit' : 'Results'}></Button>}
             </SlideContainer>
-            <ResultScreen year={year} checkGuess={checkGuess} hasGuessed={hasGuessed} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} />
+            <ResultScreen year={year} checkGuess={checkGuess} hasGuessed={hasGuessed} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} guess={guess} />
         </>
     )
 }

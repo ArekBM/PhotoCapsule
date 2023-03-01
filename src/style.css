@@ -1,6 +1,6 @@
 /********** Range Input Styles **********/
 /*Range Reset*/
-input[type="range"] {
+.guessSlider {
     -webkit-appearance: none;
      appearance: none;
      background: transparent;
@@ -8,20 +8,20 @@ input[type="range"] {
  }
  
  /* Removes default focus */
- input[type="range"]:focus {
+.guessSlider:focus {
    outline: none;
  }
  
  /***** Chrome, Safari, Opera and Edge Chromium styles *****/
  /* slider track */
- input[type="range"]::-webkit-slider-runnable-track {
+.guessSlider::-webkit-slider-runnable-track {
     background-color: #053a5f;
     border-radius: 0.5rem;
     height: 0.5rem;  
  }
  
  /* slider thumb */
- input[type="range"]::-webkit-slider-thumb {
+.guessSlider::-webkit-slider-thumb {
    -webkit-appearance: none; /* Override default look */
     appearance: none;
     margin-top: -12px; /* Centers thumb on the track */
@@ -40,14 +40,14 @@ input[type="range"] {
  
  /******** Firefox styles ********/
  /* slider track */
- input[type="range"]::-moz-range-track {
+.guessSlider::-moz-range-track {
     background-color: #053a5f;
     border-radius: 0.5rem;
     height: 0.5rem;
  }
  
  /* slider thumb */
- input[type="range"]::-moz-range-thumb {
+.geussSlider::-moz-range-thumb {
     border: none; /*Removes extra border that FF applies*/
     border-radius: 0; /*Removes default border-radius that FF applies*/
  
@@ -57,9 +57,8 @@ input[type="range"] {
     width: 1rem;
  }
  
- input[type="range"]:focus::-moz-range-thumb {
+.guessSLider:focus::-moz-range-thumb {
    border: 1px solid #053a5f;
    outline: 3px solid #053a5f;
    outline-offset: 0.125rem; 
  }
- 

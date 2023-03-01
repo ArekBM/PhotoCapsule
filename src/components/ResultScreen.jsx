@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Utils/Button';
+import Ruler from './Ruler.jsx';
 
 
-export default function Points({year, hasGuessed, getImage, points, roundScore, round, newGame }) {
+export default function Points({year, hasGuessed, getImage, points, roundScore, round, newGame, guess }) {
     console.log(hasGuessed)
     if(hasGuessed === true)
     return(
@@ -17,6 +18,7 @@ export default function Points({year, hasGuessed, getImage, points, roundScore, 
             <Box>
                 Photo was taken in {year}
             </Box>
+            <Ruler min={1918} max={2020} onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)} year={year} guess={guess} />
             <Total>
                 <h2>Total: {points} </h2>
             </Total>
