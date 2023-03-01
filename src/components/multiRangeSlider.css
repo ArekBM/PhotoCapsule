@@ -1,13 +1,15 @@
 .container {
-    height: 100vh;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 800px;
   }
   
   .slider {
     position: relative;
-    width: 200px;
+    width: 100%;
   }
   
   .slider__track,
@@ -37,7 +39,7 @@
   .slider__left-value,
   .slider__right-value {
     color: #dee2e6;
-    font-size: 12px;
+    font-size: 50px;
     margin-top: 20px;
   }
   
@@ -65,14 +67,19 @@
   }
   
   .thumb--zindex-3 {
+    width: 57%;
+    max-width: 800px;
     z-index: 3;
   }
   
   .thumb--zindex-4 {
+    width: 57%;
+    max-width: 800px;
     z-index: 4;
   }
   
   .thumb--zindex-5 {
+
     z-index: 5;
   }
   
@@ -90,17 +97,5 @@
     position: relative;
   }
   
-  /* For Firefox browsers */
-  .thumb::-moz-range-thumb {
-    background-color: #f1f5f7;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 0 1px 1px #ced4da;
-    cursor: pointer;
-    height: 18px;
-    width: 18px;
-    margin-top: 4px;
-    pointer-events: all;
-    position: relative;
-  }
+
   

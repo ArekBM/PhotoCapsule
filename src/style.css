@@ -1,3 +1,4 @@
+
 /********** Range Input Styles **********/
 /*Range Reset*/
 .guessSlider {
@@ -32,7 +33,7 @@
     width: 1rem;
  }
  
- input[type="range"]:focus::-webkit-slider-thumb {   
+.guessSLider:focus::-webkit-slider-thumb {   
    border: 1px solid #053a5f;
    outline: 3px solid #053a5f;
    outline-offset: 0.125rem; 

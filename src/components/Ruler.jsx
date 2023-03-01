@@ -45,13 +45,19 @@ const MultiRangeSlider = ({ min, max, onChange, guess, year }) => {
     onChange({ min: minVal, max: maxVal });
   }, [minVal, maxVal, onChange]);
 
+  const containerValue = `.${getPercent(minValRef.current)}`
+
+  console.log(containerValue)
+
+  console.log(maxValRef.current)
+
   return (
     <div className="container">
       <input
         type="range"
         min={min}
         max={max}
-        value={minValRef.current}
+        value={ minValRef.current }
         className={classnames("thumb thumb--zindex-3", {
             "thumb--zindex-5": minVal > max - 100
           })}
@@ -61,7 +67,7 @@ const MultiRangeSlider = ({ min, max, onChange, guess, year }) => {
         type="range"
         min={min}
         max={max}
-        value={maxValRef.current}
+        value={ maxValRef.current }
         className="thumb thumb--zindex-4"
         readOnly
       />
