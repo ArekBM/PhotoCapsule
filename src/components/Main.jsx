@@ -26,7 +26,7 @@ const MainWrapper = styled.main`
     justify-content: center;
     background-color: platinum;
     margin-left: 0;
-    
+    padding-bottom: 20px;
 `
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import photos from '../photos.json';
 import Slider from './Slider';
 import styled from 'styled-components';
-import ResultScreen from './ResultScreen'
+import Scroll from 'react-scroll';
 
 
 function Photo(){
@@ -17,6 +17,8 @@ function Photo(){
     const [round, setRound] = useState(1)
     const [roundScore, setRoundScore] = useState(0);
     const MAX = 2020;
+
+    let scroll = Scroll.animateScroll;
     
 
 
@@ -53,6 +55,7 @@ function Photo(){
             // FIX EVENTUALLY
         }
         setBoolGuess(true)
+        scroll.scrollToBottom();
     }
 
     function newGame() {

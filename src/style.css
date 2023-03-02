@@ -39,13 +39,7 @@
    outline-offset: 0.125rem; 
  }
  
- /******** Firefox styles ********/
- /* slider track */
-.guessSlider::-moz-range-track {
-    background-color: #053a5f;
-    border-radius: 0.5rem;
-    height: 0.5rem;
- }
+
  
  /* slider thumb */
 .geussSlider::-moz-range-thumb {
