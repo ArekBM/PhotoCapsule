@@ -23,7 +23,9 @@ function Photo(){
 
 
     function getImage(){
-        setRound(prevRound => prevRound + 1)
+        scroll.scrollTo(70);
+        setRound(prevRound => prevRound + 1);
+        setGuess(1960)
         setBoolGuess(false)
         setRoundScore(0)
         const randomNumber = Math.floor(Math.random() * photos.length)

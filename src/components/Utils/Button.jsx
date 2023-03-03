@@ -15,6 +15,11 @@ export default function Button({
 }
 
 const ButtonWrapper = styled.button`
-    padding: 15px 32px;
-    font-size: 32px;
+    cursor: pointer;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 1px;
+    outline: auto black;
 `

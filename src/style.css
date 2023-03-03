@@ -1,4 +1,10 @@
-
+html {
+   background-color:#E9E9EB;
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+}
 /********** Range Input Styles **********/
 /*Range Reset*/
 .guessSlider {

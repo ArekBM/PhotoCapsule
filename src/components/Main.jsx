@@ -27,6 +27,8 @@ const MainWrapper = styled.main`
     background-color: platinum;
     margin-left: 0;
     padding-bottom: 20px;
+    background-color: #E9E9EB;
 `
+
 
 

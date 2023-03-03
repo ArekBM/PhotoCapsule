@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import "./multiRangeSlider.css";
 
 
-const MultiRangeSlider = ({ min, max, onChange, guess, year }) => {
+const MultiRangeSlider = ({ min, max, guess, year }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(guess > year ? year : guess);
@@ -44,14 +44,10 @@ const MultiRangeSlider = ({ min, max, onChange, guess, year }) => {
     }
   }, [maxVal, getPercent]);
 
-  // Get min and max values when their state changes
-  useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
 
   const points = guess > year ? (year - guess + 100) : Math.abs(year - guess - 100);
 
-  console.log(points)
+
 
   return (
     <Container>
@@ -89,7 +85,6 @@ const MultiRangeSlider = ({ min, max, onChange, guess, year }) => {
 MultiRangeSlider.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired
 };
 
 const Slider = styled.div`
@@ -99,7 +94,7 @@ const Slider = styled.div`
 
 const Slider__Range = styled.div`
 border-radius: 3px;
-height: 5px;
+height: 10px;
 position: absolute;
 background-color: green;
 z-index: 2;
@@ -125,7 +120,7 @@ const Container = styled.div`
 const Slider__Track = styled.div`
   position: absolute;
   border-radius: 3px;
-  height: 5px;
+  height: 10px;
   background-color: #ced4da;
   width: 100%;
   z-index: 1;
@@ -134,7 +129,7 @@ const Slider__Track = styled.div`
 
 const Slider__Left_Value = styled.div`
   position: absolute;
-  color: #dee2e6;
+  color: black;
   font-size: 50px;
   margin-top: 20px;
   left: 6px;
@@ -142,7 +137,7 @@ const Slider__Left_Value = styled.div`
 
 const Slider__Right_Value = styled.div`
   position: absolute;
-  color: #dee2e6;
+  color: black;
   font-size: 50px;
   margin-top: 20px;
   right: -4px;
