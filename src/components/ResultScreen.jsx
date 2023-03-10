@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Utils/Button';
 import Ruler from './Ruler.jsx';
+import { AiFillCheckCircle } from 'react-icons/ai'
 
 
 export default function Points({year, hasGuessed, getImage, points, roundScore, round, newGame, guess, setSubmitScore }) {
     if(hasGuessed === true)
+    console.log(scoreRecorded)
     return(
         <ResultWrapper>
             <Divider>

@@ -18,6 +18,7 @@ function Photo(){
     const [roundScore, setRoundScore] = useState(0);
     const [submitScore, setSubmitScore] = useState(false)
     const [name, setName] = useState('')
+    const [scoreRecorded, setScoreRecord] = useState(false)
     const MAX = 2020;
 
     let scroll = Scroll.animateScroll;
@@ -106,6 +107,7 @@ function Photo(){
             <h1>Round {round} of 5</h1>
             <img src={image} />
             <Slider checkGuess={checkGuess} handleSlider={handleSlider} MAX={MAX} guess={guess} year={year} hasGuessed={boolGuess} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} setSubmitScore={setSubmitScore} />
+
         </PhotoLabWrapper>
 
     )
