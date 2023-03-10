@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import photos from '../photos.json';
 import Slider from './Slider';
 import styled from 'styled-components';
 import Scroll from 'react-scroll';
-
+import * as Realm from 'realm-web'; 
 
 function Photo(){
     const randomNumber = Math.floor(Math.random() * photos.length)
@@ -16,6 +16,8 @@ function Photo(){
     const [boolGuess, setBoolGuess] = useState(false);
     const [round, setRound] = useState(1)
     const [roundScore, setRoundScore] = useState(0);
+    const [submitScore, setSubmitScore] = useState(false)
+    const [name, setName] = useState('')
     const MAX = 2020;
 
     let scroll = Scroll.animateScroll;
@@ -40,10 +42,6 @@ function Photo(){
         if(year === guess){
             setRoundScore(100)
             setPoints(prevState => prevState + 100)
-
-            console.log('Winner')
-
-            //FIX EVENTUALLY
             
         } else {
             if(year > guess){
@@ -54,7 +52,7 @@ function Photo(){
                 setRoundScore(year - guess + 100)
                 setPoints(prevState => prevState + (year - guess + 100))
             }
-            // FIX EVENTUALLY
+
         }
         setBoolGuess(true)
         scroll.scrollToBottom();
@@ -66,19 +64,48 @@ function Photo(){
         getImage();
     }
 
-
     function handleSlider(e){
         setGuess(e.target.value)
     }
 
-    console.log(year)
-    console.log(roundScore)
+    function handleName(e){
+        setName(e.target.value)
+    }
+
+    //Submits Score 
+    
+    useEffect(() => {
+        if(submitScore){
+            const REALM_APP_ID = 'scoreboard-dafoe';
+            const app = new Realm.App({id: REALM_APP_ID});
+            const credentials = Realm.Credentials.anonymous();
+    
+            async function insertScore(scoresData, score){
+                const user = await app.logIn(credentials)
+                const db = app.currentUser.mongoClient('mongodb-atlas').db('Leaderboard');
+                const collection = db.collection(scoresData)
+                const result = await collection.insertOne(score)
+                return result
+            }
+            
+            console.log('Test ')
+            insertScore('scores', { name : name, score : points })
+                .then((result) => {
+                    console.log('Score inserted successfully:', result.insertedId);
+                })
+                .catch((error) => {
+                    console.error('failed to insert data:', error)
+                })
+            setSubmitScore(false);
+        }
+    }, [submitScore]);
 
     return (
         <PhotoLabWrapper>
+            {(round === 1) && <Tag><input type='text' name='name' onChange={handleName} placeholder='Tag:'></input></Tag>}
             <h1>Round {round} of 5</h1>
             <img src={image} />
-            <Slider checkGuess={checkGuess} handleSlider={handleSlider} MAX={MAX} guess={guess} year={year} hasGuessed={boolGuess} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame}/>
+            <Slider checkGuess={checkGuess} handleSlider={handleSlider} MAX={MAX} guess={guess} year={year} hasGuessed={boolGuess} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} setSubmitScore={setSubmitScore} />
         </PhotoLabWrapper>
 
     )
@@ -87,6 +114,13 @@ function Photo(){
 const PhotoLabWrapper = styled.div`
     display: flex;
     flex-direction: column;
+`
+
+const Tag = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index-2;
 `
 
 

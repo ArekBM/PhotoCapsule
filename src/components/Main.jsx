@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PhotoLab from './PhotoLab';
 import Button from './Utils/Button';
+import Leaderboard from './LeaderboardPage';
 
 export default function Main() {
-    const [mode, setMode] = useState()
+    const [mode, setMode] = useState('Main')
 
-    function handleMode() {
-        setMode('play')
+    function handlePlay() {
+        setMode('Play')
     }
 
-    console.log(mode)
+    function handleLeaderboard(){
+        setMode('Leaderboard')
+    }
 
     return (
         <MainWrapper>
-            {mode === 'play' && <PhotoLab />}
-            {!mode && <Button onClick={handleMode} text='Play'></Button>}
+            {mode === 'Play' && <PhotoLab />}
+            {mode === 'Leaderboard' && <Leaderboard />}
+            {mode === 'Main' && <Button onClick={handlePlay} text='Play'></Button>}
+            {mode === 'Main' && <Button onClick={handleLeaderboard} text='Leaderboard'></Button>}
         </MainWrapper>
     )
 }

@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-
 export default function Header() {
+
+    function ReloadHome(){
+        window.location.reload();
+        }
+
     return(
         <HeaderContainer>
             <HeaderWrapper>
-                <h1>PhotoCapsule</h1>
+                <Head onClick={ReloadHome}>PhotoCapsule</Head>
             </HeaderWrapper>
         </HeaderContainer>
     )
@@ -28,4 +32,8 @@ const HeaderWrapper = styled.div`
     font-size: 2.2rem;
     padding: 3rem 8rem;
 
+`
+
+const Head = styled.h1`
+    cursor: pointer;
 `

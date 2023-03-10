@@ -12,9 +12,6 @@ const MultiRangeSlider = ({ min, max, guess, year }) => {
   const maxValRef = useRef(guess > year ? guess : year);
   const range = useRef(null);
 
-  console.log(minValRef.current)
-  console.log(maxValRef.current)
-
   // Convert to percentage
   const getPercent = useCallback(
     (value) => Math.round(((value - min) / (max - min)) * 100),

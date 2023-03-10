@@ -4,8 +4,7 @@ import Button from './Utils/Button';
 import Ruler from './Ruler.jsx';
 
 
-export default function Points({year, hasGuessed, getImage, points, roundScore, round, newGame, guess }) {
-    console.log(hasGuessed)
+export default function Points({year, hasGuessed, getImage, points, roundScore, round, newGame, guess, setSubmitScore }) {
     if(hasGuessed === true)
     return(
         <ResultWrapper>
@@ -24,6 +23,7 @@ export default function Points({year, hasGuessed, getImage, points, roundScore, 
             </Total>
             {!(round === 5) && <Button onClick={getImage} text='Next Image'></Button>}
             {round === 5 && <Button onClick={newGame} text='New Game'></Button>}
+            {round === 5 && <Button onClick={setSubmitScore} text='Submit Score'></Button>}
         </ResultWrapper>
     )
 }

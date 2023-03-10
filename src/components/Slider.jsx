@@ -6,7 +6,7 @@ import Ruler from './Ruler';
 
 
 
-export default function Slider({checkGuess, handleSlider, MAX, guess, year, hasGuessed, getImage, points, roundScore, round, newGame}) {
+export default function Slider({checkGuess, handleSlider, MAX, guess, year, hasGuessed, getImage, points, roundScore, round, newGame, setSubmitScore}) {
 
     return(
         <>
@@ -22,7 +22,7 @@ export default function Slider({checkGuess, handleSlider, MAX, guess, year, hasG
                 />
                 {!hasGuessed && <Button onClick={checkGuess} text={round < 5 ? 'Submit' : 'Results'}></Button>}
             </SlideContainer>
-            <ResultScreen year={year} checkGuess={checkGuess} hasGuessed={hasGuessed} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} guess={guess} />
+            <ResultScreen year={year} checkGuess={checkGuess} hasGuessed={hasGuessed} getImage={getImage} points={points} roundScore={roundScore} round={round} newGame={newGame} guess={guess} setSubmitScore={setSubmitScore}/>
         </>
     )
 }
