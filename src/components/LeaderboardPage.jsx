@@ -4,6 +4,7 @@ import * as Realm from 'realm-web';
 
 export default function Leaderboard() {
     const [scores, setScores] = useState([])
+    
     useEffect(() => {
         async function fetchData(){
         const REALM_APP_ID = 'scoreboard-dafoe';
@@ -19,17 +20,19 @@ export default function Leaderboard() {
     }
     fetchData();
     },[]);
+
     return(
         <LeaderBoardWrapper>
-            <div>
+            <Board>
                 <h1>Leaderboard</h1>
-            </div>
+                <p>Displays top 10 scores of the day</p>
+            </Board>
             
             <Columns>
                 <h3>Tag</h3>
                 <h3>Score</h3>
             </Columns>
-            {scores.map((score) => {
+            {scores.map((score, i) => {
                 return (
                 <Columns key={score._id}>
                     <p>{score.name}</p>
@@ -38,7 +41,6 @@ export default function Leaderboard() {
                 )
             })}
         </LeaderBoardWrapper>
-        
     )
 }
 
@@ -51,4 +53,11 @@ const Columns = styled.div`
 `
 
 const LeaderBoardWrapper = styled.div`
+`
+
+const Board = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `

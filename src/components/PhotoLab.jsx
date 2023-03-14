@@ -18,7 +18,6 @@ function Photo(){
     const [roundScore, setRoundScore] = useState(0);
     const [submitScore, setSubmitScore] = useState(false)
     const [name, setName] = useState('')
-    const [scoreRecorded, setScoreRecord] = useState(false)
     const MAX = 2020;
 
     let scroll = Scroll.animateScroll;
