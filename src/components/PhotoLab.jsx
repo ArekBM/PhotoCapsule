@@ -88,7 +88,7 @@ function Photo(){
                 return result
             }
             
-            console.log('Test ')
+
             insertScore('scores', { name : name, score : points })
                 .then((result) => {
                     console.log('Score inserted successfully:', result.insertedId);
